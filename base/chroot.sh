@@ -23,20 +23,20 @@ pacman-key --populate archlinux
 
 # Set the timezone
 echo -e "${BBlue}Setting the timezone...${NC}"
-ln -sf /usr/share/zoneinfo/Europe/Zurich /etc/localtime &&
+ln -sf /usr/share/zoneinfo/Europe/Prague /etc/localtime &&
   hwclock --systohc --utc
 
 # Set up locale
 echo -e "${BBlue}Setting up locale...${NC}"
+sed -i '/#cs_CZ.UTF-8/s/^#//g' /etc/locale.gen &&
 sed -i '/#en_US.UTF-8/s/^#//g' /etc/locale.gen &&
   locale-gen &&
-  echo 'LANG=en_US.UTF-8' > /etc/locale.conf &&
-  export LANG=en_US.UTF-8
+  echo 'LANG=cs_CZ.UTF-8' > /etc/locale.conf &&
+  export LANG=cs_CZ.UTF-8
 
 echo -e "${BBlue}Setting up console keymap and fonts...${NC}"
-echo 'KEYMAP=de_CH-latin1' > /etc/vconsole.conf &&
-  echo 'FONT=lat9w-16' >> /etc/vconsole.conf &&
-  echo 'FONT_MAP=8859-1_to_uni' >> /etc/vconsole.conf
+echo 'KEYMAP=cz-us-qwertz' > /etc/vconsole.conf &&
+  echo 'FONT=Lat2-Terminus16' >> /etc/vconsole.conf
 
 # Set hostname
 echo -e "${BBlue}Setting hostname...${NC}"
