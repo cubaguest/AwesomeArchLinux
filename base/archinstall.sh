@@ -101,6 +101,7 @@ vgcreate --verbose $LVM_NAME /dev/mapper/$CRYPT_NAME &&\
 lvcreate --verbose -L $ROOT_SIZE $LVM_NAME -n root &&\
 lvcreate --verbose -L $SWAP_SIZE $LVM_NAME -n swap &&\
 lvcreate --verbose -l 100%FREE $LVM_NAME -n home &&\
+lvreduce --verbose -L -256M $LVM_NAME/home &&\
 
 # Format the partitions 
 echo -e "${BBlue}Formating filesystems...${NC}"
