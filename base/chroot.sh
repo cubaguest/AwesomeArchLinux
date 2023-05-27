@@ -104,7 +104,7 @@ chown root:root /etc/sudoers
 # add a user
 echo -e "${BBlue}Adding the user $USERNAME...${NC}"
 groupadd $USERNAME
-useradd -g $USERNAME -G sudo,wheel -s /bin/zsh -m $USERNAME &&\
+useradd -g $USERNAME -G sudo,wheel,uucp -s /bin/zsh -m $USERNAME &&\
 passwd $USERNAME &&\
 
 echo -e "${BBlue}Setting up /home and .ssh/ of the user $USERNAME...${NC}"
